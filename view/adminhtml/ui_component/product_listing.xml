@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © MageKey. All rights reserved.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="product_columns" class="Magento\Catalog\Ui\Component\Listing\Columns">
+        <column name="category_ids" class="MageKey\BackendImprove\Ui\Component\Listing\Column\Catalog\Product\Category">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">false</item>
+                    <item name="component" xsi:type="string">MageKey_BackendImprove/js/grid/columns/categories</item>
+					<item name="add_field" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Categories</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="update_url" xsi:type="url" path="mgk_backendimprove/catalog_product/savecategory"/>
+                </item>
+            </argument>
+        </column>
+     </columns>
+</listing>

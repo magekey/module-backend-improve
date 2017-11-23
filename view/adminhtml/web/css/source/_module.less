@@ -1,0 +1,27 @@
+// /**
+//  * Copyright © MageKey. All rights reserved.
+//  */
+
+.data-grid td {
+    .grid-editor-categories {
+        .action-select {
+            &:extend(.admin__action-multiselect-wrap .admin__action-multiselect);
+            &:extend(.action-select-wrap .action-select);
+
+            &:after {
+                &:extend(.action-select-wrap .action-select:after);
+            }
+        }
+        .action-menu {
+            z-index: 2;
+            left: inherit;
+            right: inherit;
+            top: inherit;
+            min-width: 34.7rem;
+            width: 40%;
+        }
+        .action-select-wrap {
+            position: inherit;
+        }
+    }
+}
