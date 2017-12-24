@@ -5,7 +5,7 @@
  */
 -->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
-    <columns name="product_columns" class="Magento\Catalog\Ui\Component\Listing\Columns">
+    <columns name="product_columns">
         <column name="category_ids" class="MageKey\BackendImprove\Ui\Component\Listing\Column\Catalog\Product\Category">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
