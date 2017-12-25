@@ -1,0 +1,10 @@
+<?php
+/**
+ * Copyright © MageKey. All rights reserved.
+ */
+
+?>
+<?php $_option = $block->getOption() ?>
+<div class="field option-<?= $_option->getType() ?>">
+    <label class="label"><span><?= $block->escapeHtml($_option->getTitle()) ?></span></label>
+</div>

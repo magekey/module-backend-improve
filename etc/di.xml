@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageKey. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Magento\Catalog\Model\Product\Option\Type\Typography" type="MageKey\BackendImprove\Model\Catalog\Product\Option\Type\Typography" />
+    <type name="Magento\Catalog\Model\Product\Option">
+        <plugin name="mgk-backendimprove-model-product-option" type="MageKey\BackendImprove\Model\Catalog\Product\OptionPlugin" />
+    </type>
+
+</config>

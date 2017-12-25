@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageKey. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_options.xsd">
+    <option name="typography" label="Typography" renderer="MageKey\BackendImprove\Block\Adminhtml\Catalog\Product\Edit\Tab\Options\Type\Typography">
+        <inputType name="label" label="Label" />
+    </option>
+</config>

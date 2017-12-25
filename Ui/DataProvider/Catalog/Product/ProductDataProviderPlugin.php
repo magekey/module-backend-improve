@@ -2,9 +2,9 @@
 /**
  * Copyright © MageKey. All rights reserved.
  */
-namespace MageKey\BackendImprove\Ui\Plugin\Catalog;
+namespace MageKey\BackendImprove\Ui\DataProvider\Catalog\Product;
 
-class ProductDataProvider
+class ProductDataProviderPlugin
 {
     /**
      * @param \Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider $subject
