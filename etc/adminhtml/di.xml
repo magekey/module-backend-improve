@@ -9,15 +9,5 @@
     <type name="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider">
         <plugin name="mgk-backendimprove-product-data-provider" type="MageKey\BackendImprove\Ui\DataProvider\Catalog\Product\ProductDataProviderPlugin" />
     </type>
-    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
-        <arguments>
-            <argument name="modifiers" xsi:type="array">
-                <item name="typography-custom-options" xsi:type="array">
-                    <item name="class" xsi:type="string">MageKey\BackendImprove\Ui\DataProvider\Catalog\Product\Form\Modifier\TypographyCustomOptions</item>
-                    <item name="sortOrder" xsi:type="number">200</item>
-                </item>
-            </argument>
-        </arguments>
-    </virtualType>
 
 </config>
