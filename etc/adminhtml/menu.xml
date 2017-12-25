@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © MageKey. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend/etc/menu.xsd">
+    <menu>
+        <add id="MageKey_BackendImprove::mgk_backendimprove" title="Backend Improves" module="MageKey_BackendImprove" sortOrder="100"
+            dependsOnModule="MageKey_BackendImprove" parent="Magento_Backend::stores" resource="MageKey_BackendImprove::mgk_backendimprove"/>
+        <add id="MageKey_BackendImprove::config" title="Configuration" module="MageKey_BackendImprove" sortOrder="10"
+            parent="MageKey_BackendImprove::mgk_backendimprove" action="adminhtml/system_config/edit/section/mgk_backendimprove" resource="MageKey_BackendImprove::config"/>
+    </menu>
+</config>

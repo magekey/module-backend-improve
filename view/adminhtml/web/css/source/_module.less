@@ -2,6 +2,40 @@
 //  * Copyright © MageKey. All rights reserved.
 //  */
 
+//
+//  Module Logo
+//  _____________________________________________
+
+.setMageKeyLogo(@module; @position) {
+    background-image: url('../@{module}/images/logo-menu.png');
+    background-repeat: no-repeat;
+    background-position: @position;
+}
+
+#nav .item-mgk-backendimprove strong {
+    .setMageKeyLogo(
+        'MageKey_BackendImprove',
+        right 2rem center
+    );
+}
+
+.admin__page-nav-item,
+.admin__page-nav-item._active {
+    &.mgk-backendimprove {
+        .admin__page-nav-link,
+        .admin__page-nav-link:hover {
+            .setMageKeyLogo(
+                'MageKey_BackendImprove',
+                right 2rem center
+            );
+        }
+    }
+}
+
+//
+//  FEATURE: Change category on product grid
+//  _____________________________________________
+
 .data-grid td {
     .grid-editor-categories {
         .action-select {

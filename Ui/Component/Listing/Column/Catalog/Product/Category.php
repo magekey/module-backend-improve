@@ -8,6 +8,8 @@ use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Catalog\Ui\Component\Product\Form\Categories\Options as CategoriesOptions;
 
+use MageKey\BackendImprove\Helper\Data as DataHelper;
+
 class Category extends \Magento\Ui\Component\Listing\Columns\Column
 {
 	/**
@@ -15,10 +17,16 @@ class Category extends \Magento\Ui\Component\Listing\Columns\Column
      */
     protected $categoriesOptions;
 
+    /**
+     * @var DataHelper
+     */
+    protected $dataHelper;
+
 	/**
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
      * @param CategoriesOptions $categoriesOptions
+     * @param DataHelper $dataHelper
      * @param array $components
      * @param array $data
      */
@@ -26,6 +34,7 @@ class Category extends \Magento\Ui\Component\Listing\Columns\Column
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
 		CategoriesOptions $categoriesOptions,
+        DataHelper $dataHelper,
         array $components = [],
         array $data = []
     ) {
@@ -36,6 +45,7 @@ class Category extends \Magento\Ui\Component\Listing\Columns\Column
 			$data
 		);
         $this->categoriesOptions = $categoriesOptions;
+        $this->dataHelper = $dataHelper;
     }
 
 	/**
@@ -46,14 +56,20 @@ class Category extends \Magento\Ui\Component\Listing\Columns\Column
     public function prepare()
     {
         parent::prepare();
-		$this->setData(
-			'config',
-			array_replace_recursive(
-				[
-					'options' => $this->categoriesOptions->toOptionArray(),
-				],
-				(array)$this->getData('config')
-			)
-		);
+        if (!$this->dataHelper->canChangeCategoryOnProductGrid()) {
+            $config['componentDisabled'] = true;
+            $this->setData('config', $config);
+    		return;
+        }
+
+        $this->setData(
+            'config',
+            array_replace_recursive(
+                [
+                    'options' => $this->categoriesOptions->toOptionArray(),
+                ],
+                (array)$this->getData('config')
+            )
+        );
     }
 }

@@ -7,6 +7,8 @@ namespace MageKey\BackendImprove\Controller\Adminhtml\Catalog\Product;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use Magento\Catalog\Api\CategoryLinkManagementInterface;
 
+use MageKey\BackendImprove\Helper\Data as DataHelper;
+
 class Savecategory extends \Magento\Backend\App\Action
 {
     /**
@@ -25,21 +27,29 @@ class Savecategory extends \Magento\Backend\App\Action
     protected $categoryLinkManagement;
 
     /**
+     * @var DataHelper
+     */
+    protected $dataHelper;
+
+    /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
      * @param ProductInterfaceFactory $productFactory
      * @param CategoryLinkManagementInterface $categoryLinkManagement
+     * @param DataHelper $dataHelper
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory,
         ProductRepositoryInterface $productRepository,
-        CategoryLinkManagementInterface $categoryLinkManagement
+        CategoryLinkManagementInterface $categoryLinkManagement,
+        DataHelper $dataHelper
     ) {
         parent::__construct($context);
         $this->resultJsonFactory = $resultJsonFactory;
         $this->productRepository = $productRepository;
         $this->categoryLinkManagement = $categoryLinkManagement;
+        $this->dataHelper = $dataHelper;
     }
 
     /**
@@ -47,10 +57,16 @@ class Savecategory extends \Magento\Backend\App\Action
      */
     public function execute()
     {
+        $resultJson = $this->resultJsonFactory->create();
+        if (!$this->dataHelper->canChangeCategoryOnProductGrid()) {
+            return $resultJson->setData([
+                'error' => 'true',
+                'message' => __('Could not save category')
+            ]);
+        }
         $productId = (int)$this->getRequest()->getPost('product_id');
         $categoryIds = (array)$this->getRequest()->getPost('category_ids');
 
-        $resultJson = $this->resultJsonFactory->create();
         try {
             $product = $this->productRepository->getById($productId);
             $this->categoryLinkManagement->assignProductToCategories(
